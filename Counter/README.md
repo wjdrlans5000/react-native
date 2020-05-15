@@ -3,7 +3,6 @@ Counter 앱
 
 * 라이브러리 설치
 react-native init Counter //리엑트 네이티브 프로젝트 생성
-
 cd Counter
 npm install --save styled-components //스타일드-컴포넌트 라이브러리 설치
 npm install --save-dev typescript @types/react @types/react-native @types/styled-components babel-plugin-root-import

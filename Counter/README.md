@@ -1,17 +1,17 @@
-react-native
-Counter 앱
+* react-native
+* Counter 앱
 
 * 라이브러리 설치
 
-react-native init Counter //리엑트 네이티브 프로젝트 생성
-cd Counter
-npm install --save styled-components //스타일드-컴포넌트 라이브러리 설치
-npm install --save-dev typescript @types/react @types/react-native @types/styled-components babel-plugin-root-import
-//typescript- 타입스크립트 라이브러리
-//@types/react 리엑트 타입이 정의된 파일
-//@types/react-native 리엑트 네이티브 타입이 정의된 파일
-//@types/styled-components 스타일드 컴포넌트 타입이 정의된 파일
-//babel-plugin-root-import 컴포넌트 추가시 절대경로 사용을 위한 라이브러리
+* react-native init Counter //리엑트 네이티브 프로젝트 생성
+* cd Counter
+* npm install --save styled-components //스타일드-컴포넌트 라이브러리 설치
+* npm install --save-dev typescript @types/react @types/react-native @types/styled-components babel-plugin-root-import
+* //typescript- 타입스크립트 라이브러리
+* //@types/react 리엑트 타입이 정의된 파일
+* //@types/react-native 리엑트 네이티브 타입이 정의된 파일
+* //@types/styled-components 스타일드 컴포넌트 타입이 정의된 파일
+* //babel-plugin-root-import 컴포넌트 추가시 절대경로 사용을 위한 라이브러리
 
 * 설치한 라이브러리 관련 설정 추가
 

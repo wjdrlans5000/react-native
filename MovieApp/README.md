@@ -25,6 +25,8 @@
   * https://github.com/crazycodeboy/react-native-splash-screen     
 * AsuncStroage 라이브러리 설치
   * npm install --save @react-native-community/async-storage
-* 네비게이션 라이브러리 설치
-  * npm install --save react-navigation react-native-gesture-handler react-native-reanimated
+* 네비게이션 라이브러리 설치 (v5)
+  * npm i @react-navigation/native --save
+  * npm install --save react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+  * #cd ios  #pod install
   

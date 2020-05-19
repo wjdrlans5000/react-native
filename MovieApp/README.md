@@ -18,6 +18,7 @@
     * App.tsx 파일열고 아래 코드 추가 
       * import SplashScreen from 'react-native-splash-screen'
       * useEffect(() => { SplashScreen.hide(); }, []);
+  * 스플래시 이미지의 경우 3000x3000 px 사이즈 이상의 png 파일 필요.
 * react-native-make 및 react-native-splash-screen 참고 url      
   * https://dev-yakuza.github.io/ko/react-native/react-native-make/
   * https://dev-yakuza.github.io/ko/react-native/react-native-splash-screen/

@@ -1,0 +1,23 @@
+* MovieApp
+
+* 환경설정의 경우 Counter 앱과 마찬가지로 스타일드컴포넌트, 타입스크립트 바벨플러그인 등을 설치한다.
+
+* 앱 아아콘 설정
+  * react-native-make 설치
+    * npm install --save-dev @bam.tech/react-native-make
+    * react-native-make를 통해 App 아이콘을 생성하려면 1024x1024 px 사이즈의 png 파일이 필요.
+    * react-native set-icon --path [path-to-image] --background ["color"]
+* 스플래시 스크린 이미지 설정
+  * react-native-splash-screen 설치
+    * npm i react-native-splash-screen --save
+  * 라이브러리 연결
+    * react-native link react-native-splash-screen 
+  * 스플래시 스크린 종료를 위한 코드 추가
+    * App.tsx 파일열고 아래 코드 추가 
+      * import SplashScreen from 'react-native-splash-screen'
+      * useEffect(() => { SplashScreen.hide(); }, []);
+* AsuncStroage 라이브러리 설치
+  * npm install --save @react-native-community/async-storage
+* 네비게이션 라이브러리 설치
+  * npm install --save react-navigation react-native-gesture-handler react-native-reanimated
+  

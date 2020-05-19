@@ -19,9 +19,9 @@
       * import SplashScreen from 'react-native-splash-screen'
       * useEffect(() => { SplashScreen.hide(); }, []);
 * react-native-make 및 react-native-splash-screen 참고 url      
- * https://dev-yakuza.github.io/ko/react-native/react-native-make/
- * https://dev-yakuza.github.io/ko/react-native/react-native-splash-screen/
- * https://github.com/crazycodeboy/react-native-splash-screen     
+  * https://dev-yakuza.github.io/ko/react-native/react-native-make/
+  * https://dev-yakuza.github.io/ko/react-native/react-native-splash-screen/
+  * https://github.com/crazycodeboy/react-native-splash-screen     
 * AsuncStroage 라이브러리 설치
   * npm install --save @react-native-community/async-storage
 * 네비게이션 라이브러리 설치

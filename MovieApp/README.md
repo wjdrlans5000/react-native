@@ -12,10 +12,16 @@
     * npm i react-native-splash-screen --save
   * 라이브러리 연결
     * react-native link react-native-splash-screen 
+  * 셋 스플래시
+    * react-native set-splash --platform android --path <path-to-image> --resize <[contain]|cover|center> --background <background-color>
   * 스플래시 스크린 종료를 위한 코드 추가
     * App.tsx 파일열고 아래 코드 추가 
       * import SplashScreen from 'react-native-splash-screen'
       * useEffect(() => { SplashScreen.hide(); }, []);
+* react-native-make 및 react-native-splash-screen 참고 url      
+ * https://dev-yakuza.github.io/ko/react-native/react-native-make/
+ * https://dev-yakuza.github.io/ko/react-native/react-native-splash-screen/
+ * https://github.com/crazycodeboy/react-native-splash-screen     
 * AsuncStroage 라이브러리 설치
   * npm install --save @react-native-community/async-storage
 * 네비게이션 라이브러리 설치

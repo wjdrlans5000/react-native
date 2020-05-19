@@ -13,7 +13,7 @@
   * 라이브러리 연결
     * react-native link react-native-splash-screen 
   * 셋 스플래시
-    * react-native set-splash --platform android --path "<path-to-image>" --resize <[contain]|cover|center> --background <background-color>
+    * react-native set-splash --platform android --path [path-to-image] --resize [contain|cover|center] --background [background-color]
   * 스플래시 스크린 종료를 위한 코드 추가
     * App.tsx 파일열고 아래 코드 추가 
       * import SplashScreen from 'react-native-splash-screen'

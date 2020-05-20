@@ -29,4 +29,8 @@
   * npm i @react-navigation/native --save
   * npm install --save react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
   * #cd ios  #pod install
+* 네비게이션 참고 url
+  * https://reactnavigation.org/docs/
+  * https://dev-yakuza.github.io/ko/react-native/react-navigation/
+  * https://github.com/dev-yakuza/react-navigation-v5-exercise/tree/master/src/Screen
   

@@ -1,5 +1,5 @@
 * 윈도우 개발환경 설정
-1.NodeJs 설치
+1. NodeJs 설치
 2.파이썬 설치 (choco install -y python2)
 3.자바개발킷 설치
 4.리엑트 네이티브 cli 설치

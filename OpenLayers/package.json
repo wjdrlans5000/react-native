@@ -1,0 +1,39 @@
+{
+  "name": "OpenLayers",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "16.11.0",
+    "react-kakao-maps": "github:Musma/react-kakao-maps#0.0.1",
+    "react-native": "0.62.2",
+    "react-native-autoheight-webview": "1.5.1",
+    "react-native-maps": "0.27.1",
+    "react-native-webview": "9.4.0",
+    "styled-components": "5.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.9.6",
+    "@babel/runtime": "7.9.6",
+    "@react-native-community/eslint-config": "0.0.5",
+    "@types/react": "16.9.35",
+    "@types/react-native": "0.62.11",
+    "@types/styled-components": "5.1.0",
+    "babel-jest": "24.9.0",
+    "babel-plugin-root-import": "6.5.0",
+    "eslint": "6.8.0",
+    "jest": "24.9.0",
+    "metro-react-native-babel-preset": "0.58.0",
+    "react-test-renderer": "16.11.0",
+    "typescript": "3.9.3"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

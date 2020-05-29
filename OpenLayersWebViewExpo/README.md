@@ -14,9 +14,15 @@
 * npm install expo install expo-location
 * expo install expo-permissions
 
-* npm install 스타일드컴포넌트
+# 스타일드컴포넌트 라이브러리 설치
+* npm install --save styled-components //스타일드-컴포넌트 라이브러리 설치
+* npm install --save-dev @types/styled-components
+
+# 네비게이터 라이브러리 설치
 * npm install 네비게이터
-* npm install 어싱크스토리지
+
+# 어싱크스토리지 라이브러리 설치
+* npm install --save @react-native-community/async-storage
 
 # 참고url
 * https://reactnativemaster.com/react-native-geolocation-example/

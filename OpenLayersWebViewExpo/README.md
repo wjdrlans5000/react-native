@@ -26,6 +26,9 @@
 * npm install --save @react-navigation/stack        스택 네비게이터
 * npm install --save @react-navigation/drawer       드로우 네비게이터
 * npm install --save @react-navigation/bottom-tabs  바텀-탭 네비게이터 
+* expo의 경우 safeAreaView 관련 라이브러리 설치 후 네비게이션 감싸줘야함
+ * expo install react-native-safe-area-view react-native-safe-area-context
+ * https://github.com/react-navigation/react-native-safe-area-view
   
 # 어싱크스토리지 라이브러리 설치
 * npm install --save @react-native-community/async-storage

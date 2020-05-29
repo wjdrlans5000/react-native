@@ -1,5 +1,6 @@
 # OpenlayersWebViewExpo
-
+* 오픈레이어스 활용을 위해 WebView를 사용하여 지도제어를 수행하고 react-native의 네비게이션, 지오로케이션, 카메라 등의 기능을 적용
+* 디바이스에서 확인하기 위하여 expo 환경에서 개발
 # 개발환경
 * expo init OpenlayersWebViewExpo
 * blank(typescript)로 프로젝트 생성

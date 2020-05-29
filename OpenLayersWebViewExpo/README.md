@@ -13,6 +13,8 @@
 # 위치정보 가져오기위한 라이브러리 설치
 * npm install expo install expo-location
 * expo install expo-permissions
+* 참고 URL
+  * https://reactnativemaster.com/react-native-geolocation-example/
 
 # 스타일드컴포넌트 라이브러리 설치
 * npm install --save styled-components //스타일드-컴포넌트 라이브러리 설치
@@ -28,6 +30,4 @@
 # 어싱크스토리지 라이브러리 설치
 * npm install --save @react-native-community/async-storage
 
-# 참고url
-* https://reactnativemaster.com/react-native-geolocation-example/
     

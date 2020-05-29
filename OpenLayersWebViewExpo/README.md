@@ -18,9 +18,13 @@
 * npm install --save styled-components //스타일드-컴포넌트 라이브러리 설치
 * npm install --save-dev @types/styled-components
 
-# 네비게이터 라이브러리 설치
-* npm install 네비게이터
-
+# 네비게이터 라이브러리 설치 (V5)
+* npm i @react-navigation/native --save
+* npm install --save react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+* npm install --save @react-navigation/stack        스택 네비게이터
+* npm install --save @react-navigation/drawer       드로우 네비게이터
+* npm install --save @react-navigation/bottom-tabs  바텀-탭 네비게이터 
+  
 # 어싱크스토리지 라이브러리 설치
 * npm install --save @react-native-community/async-storage
 

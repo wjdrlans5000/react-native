@@ -39,6 +39,7 @@
   * https://docs.expo.io/versions/latest/sdk/camera/#takepictureasync
   * https://medium.com/wesionary-team/camera-module-in-react-native-with-expo-camera-3b8c9f3cd076
   * https://reactnativemaster.com/react-native-camera-expo-example
+  * https://docs.expo.io/versions/latest/sdk/imagepicker/
   * https://github.com/react-native-community/react-native-cameraroll
   
 # 어싱크스토리지 라이브러리 설치

@@ -6,7 +6,9 @@
  * @flow strict-local
  */
 
-import React,{useEffect, useRef } from 'react';
+import React from 'react';
+import { StatusBar } from 'react-native';
+import Navigator from './Screen/Navigator';
 import MyMap from "./Screen/map";
 
 
@@ -17,7 +19,8 @@ interface Props {}
 const App = ({  }: Props) => {
   return (
   <>
-    <MyMap />
+    <StatusBar barStyle="default" />
+    <Navigator />
   </>
   );
 };

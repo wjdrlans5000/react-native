@@ -31,13 +31,15 @@
   * expo install react-native-safe-area-view react-native-safe-area-context
   * https://github.com/react-navigation/react-native-safe-area-view
   
-# expo 카메라 라이브러리 설치
+# 카메라 관련 라이브러리 설치
 * expo install expo-camera
 * expo install expo-image-picker
+* npm install @react-native-community/cameraroll --save
 * 참고 url
   * https://docs.expo.io/versions/latest/sdk/camera/#takepictureasync
   * https://medium.com/wesionary-team/camera-module-in-react-native-with-expo-camera-3b8c9f3cd076
   * https://reactnativemaster.com/react-native-camera-expo-example
+  * https://github.com/react-native-community/react-native-cameraroll
   
 # 어싱크스토리지 라이브러리 설치
 * npm install --save @react-native-community/async-storage

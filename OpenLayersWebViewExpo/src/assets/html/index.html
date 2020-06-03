@@ -1,0 +1,167 @@
+<!doctype html>
+<html style="height:100%;">
+<head>
+<title>Simple Map</title>
+<link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+<!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+<script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js"></script>
+<style>
+    a.skiplink {
+      position: absolute;
+      clip: rect(1px, 1px, 1px, 1px);
+      padding: 0;
+      border: 0;
+      height: 1px;
+      width: 1px;
+      overflow: hidden;
+    }
+    a.skiplink:focus {
+      clip: auto;
+      height: auto;
+      width: auto;
+      background-color: #fff;
+      padding: 0.3em;
+    }
+    #map:focus {
+      outline: #4A74A8 solid 0.15em;
+    }
+  </style>
+</head>
+<body style="height:100%;">
+  <a class="skiplink" href="#map">Go to map</a>
+  <div id="map" class="map" tabindex="0" style="height:100%;"></div>
+
+  <script>
+      // define epsg:5181 projection
+    proj4.defs("EPSG:5181","+proj=tmerc +lat_0=38 +lon_0=127 +k=1 +x_0=200000 +y_0=500000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs");
+    ol.proj.setProj4 = proj4;
+    var resolutions = [2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1, 0.5, 0.25];
+    var extent      = [-30000, -60000, 494288, 988576];
+    var projection = new ol.proj.Projection({
+      code: 'EPSG:5181',
+      extent: extent,
+      units: 'm'
+    });
+    // alert(ol.proj.transform([window.longitude*1 , window.latitude*1], "EPSG:5181", "EPSG:3857"))
+     
+    var tileLayer = new ol.layer.Tile({
+              title : 'Daum Street Map',
+              visible : true,
+              type : 'base',
+              source : new ol.source.XYZ({
+                  projection : projection,
+                  tileSize: 256,
+                  minZoom: 0,
+                  maxZoom: resolutions.length - 1,
+                  tileGrid: new ol.tilegrid.TileGrid({
+                      origin: [extent[0], extent[1]],
+                      resolutions: resolutions
+                  }),
+                  tileUrlFunction: function (tileCoord, pixelRatio) {
+                      if (tileCoord == null) return undefined;
+
+                      var s = Math.floor(Math.random() * 4);  // 0 ~ 3
+                      var z = resolutions.length - tileCoord[0];
+                      var x = tileCoord[1];
+                      var y = tileCoord[2];
+
+                        return 'http://map' + s + '.daumcdn.net/map_2d/1902usc/L' + z + '/' + y + '/' + x + '.png';
+                  },
+                  attributions: [
+                      new ol.Attribution({ 
+                          html: ['<a href="http://map.daum.net"><img src="http://i1.daumcdn.net/localimg/localimages/07/mapjsapi/m_bi.png"></a>']
+                      })
+                  ]
+              })
+          });
+ 
+     var map = new ol.Map({
+                  controls : [
+                      new ol.control.Attribution({
+                          collapsible: true
+                      }), 
+                      new ol.control.Zoom(), 
+                    //   new ol.control.FullScreen(),
+                      new ol.control.MousePosition({
+                          projection: 'EPSG:4326',
+                          coordinateFormat: ol.coordinate.createStringXY(2)
+                      }),
+                    //   new ol.control.ZoomToExtent({
+                    //       extent: extent
+                    //   }),
+                    //   new ol.control.ScaleLine(),
+                  ],
+                  layers : [
+                      new ol.layer.Group({
+                          title : 'Base Maps',
+                          layers : [
+                              tileLayer
+                          ]
+                        }),
+                    //   new ol.layer.Group({
+                    //       title: 'Tiled WMS',
+                    //       layers: [
+                    //       ]
+                    //   })
+                  ],
+                  target : 'map',
+                  renderer: 'canvas',
+                  interactions : ol.interaction.defaults({
+                      shiftDragZoom : true
+                  }),
+                  view : new ol.View({
+                      extent: extent,
+                      resolutions: resolutions,
+                      maxResolution: resolutions[0],
+                      zoomFactor: 1,
+                      projection: ol.proj.get("EPSG:5181"),
+                      center : ol.proj.transform([window.longitude*1 , window.latitude*1], "EPSG:4326", "EPSG:5181"),
+                      zoom : 18
+                  })
+              });
+
+    var startMarker = new ol.Feature({
+        type: 'icon',
+        geometry: new ol.geom.Point( ol.proj.transform([window.longitude*1 , window.latitude*1], "EPSG:4326", "EPSG:5181"))
+    });
+              
+    var vectorLayer = new ol.layer.Vector({
+        source: new ol.source.Vector({
+          features: [startMarker]
+        }),
+        style: function(feature) {
+            var styles = new ol.style.Style({
+                image: new ol.style.Icon({
+                anchor: [0.5, 1],
+                src: 'http://192.168.0.5:8080/getImage.do'
+                })
+            })
+          return styles;
+        }
+      });
+      map.addLayer(vectorLayer);
+        // window.addEventListener('message', function (e) {
+        //     console.log("react native에서 메세지를 받음", JSON.parse(e.data));
+            
+        //     var message;
+        //     try {
+        //         message = JSON.parse(e.data)
+        //         alert('message',message)
+        //     }
+        //     catch (err) {
+        //         console.error("메세지를 파싱할수 없음 " + err);
+        //         return;
+        //     }
+
+        // })
+        alert(window.longitude + ',' + window.latitude)
+        // var map = new ol.Map({
+        //     layers: [new ol.layer.Tile({source: new ol.source.OSM()})],
+        //     target: "map",
+        //     view: new ol.View({center : ol.proj.transform([window.longitude*1 , window.latitude*1], "EPSG:4326", "EPSG:3857"),zoom: 18})
+        // });
+</script>
+</body>
+</html>

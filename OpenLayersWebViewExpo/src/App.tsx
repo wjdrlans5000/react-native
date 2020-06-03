@@ -9,7 +9,7 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import Navigator from './Screen/Navigator';
-import MyMap from "./Screen/map";
+// import MyMap from "./Screen/map";
 
 
 

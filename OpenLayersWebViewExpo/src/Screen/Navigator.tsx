@@ -8,6 +8,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import MyMap from './map/';
+import List from './List/';
 import Camera from '../Components/Camera';
 import ImagePicker from '../Components/Camera/ImagePicker';
 
@@ -20,7 +21,7 @@ const DrawNavi = createDrawerNavigator();
 const BottomTab = createBottomTabNavigator();
 
 const MyFeedTabStackNavi = createStackNavigator();
-const FeedsTabStackNavi = createStackNavigator();
+const ListTabStackNavi = createStackNavigator();
 const UploadTabStackNavi = createStackNavigator();
 const NotificationTabStackNavi = createStackNavigator();
 const ProfileTabStackNavi = createStackNavigator();
@@ -47,17 +48,17 @@ const MyMapTabStackNavigator = () => {
 
   )
 }
-// const FeedsTabStackNavigator = () => {
-//   return (
-//     <FeedsTabStackNavi.Navigator>
-//       <FeedsTabStackNavi.Screen
-//         name="Feeds"
-//         component={Feeds}
-//         />
-//     </FeedsTabStackNavi.Navigator>
+const ListTabStackNavigator = () => {
+  return (
+    <ListTabStackNavi.Navigator>
+      <ListTabStackNavi.Screen
+        name="List"
+        component={List}
+        />
+    </ListTabStackNavi.Navigator>
 
-//   )
-// }
+  )
+}
 // const UploadTabStackNavigator = () => {
 //   return (
 //     <UploadTabStackNavi.Navigator>
@@ -116,12 +117,13 @@ const BottomTabNavi = () =>{
   console.log('bottomTab')
   return (
     <BottomTab.Navigator
+      initialRouteName="MyMapTabStack"
     >
       <BottomTab.Screen
-        name="MyMapStack"
+        name="MyMapTabStack"
         component={MyMapTabStackNavigator}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: 'Map',
           tabBarIcon: ({ focused }: { focused: boolean }) => (
             <Image
               source={
@@ -133,22 +135,22 @@ const BottomTabNavi = () =>{
           ),
         }}
       />
-      {/* <BottomTab.Screen
-        name="FeedsTabStack"
-        component={FeedsTabStackNavigator}
+      <BottomTab.Screen
+        name="ListTabStack"
+        component={ListTabStackNavigator}
         options={{
-          tabBarLabel: '',
+          tabBarLabel: 'List',
           tabBarIcon: ({ focused }: { focused: boolean }) => (
             <Image
               source={
                 focused
-                  ? require('~/Assets/Images/Tabs/ic_search.png')
-                  : require('~/Assets/Images/Tabs/ic_search_outline.png')
+                  ? require('../assets/Tabs/ic_search.png')
+                  : require('../assets/Tabs/ic_search_outline.png')
               }
             />
           ),
         }}
-      /> */}
+      />
       {/* <BottomTab.Screen
         name="UploadTabStack"
         component={UploadTabStackNavigator}

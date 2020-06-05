@@ -9,19 +9,15 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import Navigator from './Screen/Navigator';
-// import MyMap from "./Screen/map";
+import {SelectListContextProvider} from  './Context'
 
 
-
-
-interface Props {}
-
-const App = ({  }: Props) => {
+const App = () => {
   return (
-  <>
+  <SelectListContextProvider>
     <StatusBar barStyle="default" />
     <Navigator />
-  </>
+  </SelectListContextProvider>
   );
 };
 

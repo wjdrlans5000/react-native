@@ -1,4 +1,4 @@
-import React,{useState, useEffect, useRef } from "react";
+import React,{useState, useEffect, useContext } from "react";
 import { Dimensions} from 'react-native'
 import { WebView,WebViewMessageEvent } from 'react-native-webview';
 import * as Location from 'expo-location';
@@ -11,6 +11,7 @@ import Input from '../../Components/Input';
 import AssetUtils from "expo-asset-utils";
 import { Asset } from "expo-asset";
 import * as FileSystem from "expo-file-system";
+import { SelectListContext } from '../../Context';
 
 const SearchBar = Styled.View`
   flex: 1;
@@ -31,7 +32,7 @@ interface errorMessageProps {
 
 const INDEX_FILE_PATH = require(`../../assets/html/index.html`);
 
-const PublicMap = ({ navigation }) => {
+const PublicMap = ({ navigation, route }) => {
   const [webViewState, setWebViewState] = useState({webViewHeight:Dimensions.get('window').height});
   const [geoLocationState, setGeoLocationProps] = useState<geoLocationProps>({
     latitude : undefined,
@@ -40,6 +41,8 @@ const PublicMap = ({ navigation }) => {
   const [errorMessageState, setErrorMessageProps] = useState<errorMessageProps>();
   const [webViewRef, setWebViewRef] = useState(null);
   const [webviewContent, setWebviewContent] = useState<String>();
+
+  const {selectList} = useContext<selectListContext>(SelectListContext);
 
   const getCurrentLocation = async () => {
     console.log("getCurrentLocation")
@@ -71,26 +74,6 @@ const PublicMap = ({ navigation }) => {
       console.warn("Unable to resolve index file");
     }
   };
-
-  let html = '<!doctype html>' 
-        html +=  '<html style="height:100%;">' 
-        html += '<head>'
-        html += '<title>Simple Map</title>'
-        html += '<link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">'
-        html += '<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>'
-        html += '<script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>' 
-        html += '</head>' 
-        html += '<body style="height:100%;">' 
-        html += '<div id="map" class="map" style="height:100%;"></div>' 
-        html += '<script>' 
-        html += 'var map = new ol.Map({' 
-        html += 'layers: [new ol.layer.Tile({source: new ol.source.OSM()})],' 
-        html += 'target: "map",' 
-        html += 'view: new ol.View({center : ol.proj.transform([' +geoLocationState.longitude + ',' + geoLocationState.latitude + '], "EPSG:4326", "EPSG:3857"),zoom: 18})' 
-        html += '});' 
-        html += '</script>' 
-        html += '</body>' 
-        html += '</html>'
 
 
   const onWebViewMessage = (event: WebViewMessageEvent) => {
@@ -127,18 +110,6 @@ const PublicMap = ({ navigation }) => {
     loadHTMLFile();
   },[]);
   
-  // const injectJSFileFromWeb = `
-  //   document.body.style.backgroundColor = 'blue';
-  //   true;
-  // `;
-
-  // Send message to webview
-  // const sendMessage = (payload: object) => {
-
-  //   webViewRef?.injectJavaScript(
-  //     `window.postMessage(${JSON.stringify(payload)}, '*');`
-  //   );
-  // };
   const injectJavaScriptInHtml = () => {
     console.log('onload')
     // createMap('${geoLocationState.longitude}','${geoLocationState.latitude}')
@@ -160,6 +131,24 @@ const PublicMap = ({ navigation }) => {
       `
     )
   }
+
+  const injectXY = () => {
+    console.log('injectXY')
+    //useContext값이 다르면 set
+    const selectItem = selectList;
+    webViewRef != null && webViewRef.injectJavaScript(
+      `
+      alert('${selectItem.x}')
+      // window.selectItem = '${selectItem}';
+      `
+    )
+  }
+
+  useEffect(() => {
+    console.log('selectList',selectList)
+    //최초 로딩시 injectXY 실행 X, selectList 컨텍스트 값이 바뀔때마다 injectXT 수행
+    selectList != undefined && (selectList.station_id != '' && injectXY());
+  },[selectList])
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

@@ -46,4 +46,7 @@
 # 어싱크스토리지 라이브러리 설치
 * npm install --save @react-native-community/async-storage
 
+# expo-asset 라이브러리 설치
+* expo install expo-asset
+* npm install expo-asset-utils ??
     

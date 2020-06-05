@@ -44,6 +44,7 @@ const PublicMap = ({ navigation, route }) => {
 
   const {selectList} = useContext<selectListContext>(SelectListContext);
 
+  //현재위치가져오기
   const getCurrentLocation = async () => {
     console.log("getCurrentLocation")
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
@@ -60,6 +61,7 @@ const PublicMap = ({ navigation, route }) => {
     // console.log(geoLocationState)
   };
 
+  //html파일 로드
   const loadHTMLFile = async () => {
     try {
       console.log('loadHTMLfILE')
@@ -132,6 +134,7 @@ const PublicMap = ({ navigation, route }) => {
     )
   }
 
+  //리스트클릭시 해당 xy로 지도 이동
   const injectXY = () => {
     console.log('injectXY')
     //useContext값이 다르면 set
@@ -139,11 +142,13 @@ const PublicMap = ({ navigation, route }) => {
     webViewRef != null && webViewRef.injectJavaScript(
       `
       alert('${selectItem.x}')
+      map.getView().setCenter(['${selectItem.x}','${selectItem.y}']);
       // window.selectItem = '${selectItem}';
       `
     )
   }
 
+  //최초, 리스트 클릭하여 selectList 값이 변경될 경우
   useEffect(() => {
     console.log('selectList',selectList)
     //최초 로딩시 injectXY 실행 X, selectList 컨텍스트 값이 바뀔때마다 injectXT 수행

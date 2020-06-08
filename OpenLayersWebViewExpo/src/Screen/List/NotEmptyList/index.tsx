@@ -34,7 +34,6 @@ const TodoItem = ({ text, navigation }: Props) => {
   return (
     <Container>
       <Touch onPress = {() => {
-            debugger;
             console.log('addSelectList',addSelectList);
             //useContext 변경
             addSelectList(text);

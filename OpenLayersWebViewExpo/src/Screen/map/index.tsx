@@ -120,15 +120,6 @@ const PublicMap = ({ navigation, route }) => {
       `
       window.longitude = '${geoLocationState.longitude}';
       window.latitude = '${geoLocationState.latitude}';
-      // window.alert('${geoLocationState.longitude}')
-      // window.alert('${geoLocationState.latitude}')
-      // window.ReactNativeWebView.postMessage('${geoLocationState.longitude}');
-      // var corescript = document.createElement('script');
-      // corescript.type = 'text/javascript';
-      // corescript.src = "${jsFileName}";
-      // var parent = document.getElementsByTagName('head').item(0);
-      // window.alert(parent)
-      // parent.appendChild(corescript);
       // window.ReactNativeWebView.postMessage('${geoLocationState.longitude}')
       `
     )
@@ -141,8 +132,19 @@ const PublicMap = ({ navigation, route }) => {
     const selectItem = selectList;
     webViewRef != null && webViewRef.injectJavaScript(
       `
-      alert('${selectItem.x}')
-      map.getView().setCenter(['${selectItem.x}','${selectItem.y}']);
+      // alert(['${selectItem.x}' , '${selectItem.y}'])
+      var selectMarker = new ol.Feature({
+        type: 'icon',
+        geometry: new ol.geom.Point(['${selectItem.x}' , '${selectItem.y}'])
+      });
+
+      vectorLayer.setSource(new ol.source.Vector({
+        features: [selectMarker],
+        projection: ol.proj.get('EPSG:5174')
+      })
+      )
+
+      map.getView().setCenter(['${selectItem.x}'*1 , '${selectItem.y}'*1]);
       // window.selectItem = '${selectItem}';
       `
     )

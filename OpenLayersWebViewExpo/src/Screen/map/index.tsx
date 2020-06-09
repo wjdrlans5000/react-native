@@ -132,20 +132,55 @@ const PublicMap = ({ navigation, route }) => {
     const selectItem = selectList;
     webViewRef != null && webViewRef.injectJavaScript(
       `
-      // alert(['${selectItem.x}' , '${selectItem.y}'])
+      var point = ['${selectItem.x}'*1 , '${selectItem.y}'*1];
       var selectMarker = new ol.Feature({
         type: 'icon',
-        geometry: new ol.geom.Point(['${selectItem.x}' , '${selectItem.y}'])
+        geometry: new ol.geom.Point(point)
       });
 
       vectorLayer.setSource(new ol.source.Vector({
         features: [selectMarker],
         projection: ol.proj.get('EPSG:5174')
-      })
+        })
       )
 
-      map.getView().setCenter(['${selectItem.x}'*1 , '${selectItem.y}'*1]);
-      // window.selectItem = '${selectItem}';
+      //연속지적 레이어 삭제
+      map.getLayers().forEach(function(layer){
+        var layerId =  layer.get('layerId') + '';
+        if(layerId == 'cbnd'){
+          map.removeLayer(layer);
+        }
+      });
+      
+      //geoserver 요청
+      var vectorSource = new ol.source.Vector();
+      var vector = new ol.layer.Vector({
+        layerId: 'cbnd',
+        source: vectorSource,
+        style: new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: 'rgba(230, 67, 51, 1.0)',
+            width: 2
+          }),
+          fill : new ol.style.Fill({
+            color: 'rgba(230, 67, 51, 0.05)'
+          })
+        })
+      });
+      
+     var url = "http://192.168.0.5:8081/geoserver/cite/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=cite:cla_lppacbnd_kl_20180801&outputFormat=application%2Fjson&CQL_FILTER=pnu=${selectItem.station_id}"
+     fetch(url)
+     .then(response => response.json())
+     .then(json => {
+       var features = (new ol.format.GeoJSON()).readFeatures(json);
+       vectorSource.addFeatures(features);
+        map.addLayer(vector);;
+        map.getView().fit(vectorSource.getExtent());
+     })
+     .catch(error => {
+       console.log(error);
+     });
+
       `
     )
   }

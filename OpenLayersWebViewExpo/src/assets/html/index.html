@@ -117,15 +117,15 @@
                       resolutions: resolutions,
                       maxResolution: resolutions[0],
                       zoomFactor: 1,
-                      projection: ol.proj.get("EPSG:5181"),
-                      center : ol.proj.transform([window.longitude*1 , window.latitude*1], "EPSG:4326", "EPSG:5181"),
+                      projection: ol.proj.get("EPSG:5174"),
+                      center : ol.proj.transform([window.longitude*1 , window.latitude*1], "EPSG:4326", "EPSG:5174"),
                       zoom : 18
                   })
               });
 
     var startMarker = new ol.Feature({
         type: 'icon',
-        geometry: new ol.geom.Point( ol.proj.transform([window.longitude*1 , window.latitude*1], "EPSG:4326", "EPSG:5181"))
+        geometry: new ol.geom.Point( ol.proj.transform([window.longitude*1 , window.latitude*1], "EPSG:4326", "EPSG:5174"))
     });
               
     var vectorLayer = new ol.layer.Vector({

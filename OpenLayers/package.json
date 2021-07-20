@@ -12,7 +12,7 @@
   "dependencies": {
     "react": "16.11.0",
     "react-kakao-maps": "github:Musma/react-kakao-maps#0.0.1",
-    "react-native": "0.62.2",
+    "react-native": "0.62.3",
     "react-native-autoheight-webview": "1.5.1",
     "react-native-maps": "0.27.1",
     "react-native-webview": "9.4.0",
